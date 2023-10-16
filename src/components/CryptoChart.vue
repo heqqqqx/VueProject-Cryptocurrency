@@ -1,56 +1,33 @@
-<!-- src/components/CryptoChart.vue -->
-
 <template>
-    <div>
-      <apexchart type="candlestick" :options="chartOptions" :series="series"></apexchart>
-    </div>
-  </template>
-  
-  <script>
-  import VueApexCharts from "vue-apexcharts";
-  
-  export default {
-    components: {
-      apexchart: VueApexCharts,
-    },
-    props: ['chartData'],
-    data() {
-      return {
-        chartOptions: {
-          chart: {
-            id: "crypto-chart"
-          },
-          xaxis: {
-            type: 'datetime'
-          },
-          yaxis: {
-            tooltip: {
-              enabled: true
-            }
-          }
-        },
-        series: [
-          {
-            data: this.transformData(this.chartData)
-          }
-        ]
-      };
-    },
-    methods: {
-      transformData(data) {
-        return data.map(item => {
-          return {
-            x: new Date(item[0]),
-            y: [item[1], item[2], item[3], item[4]]
-          }
-        });
-      }
-    },
-    watch: {
-      chartData(newData) {
-        this.series[0].data = this.transformData(newData);
-      }
-    }
+  <div>
+    <h1>{{ cryptoName }} Prix : ${{ price }}</h1>
+  </div>
+</template>
+
+<script>
+import { ref, onMounted } from 'vue';
+import { getCryptoData } from '../services/binance.js';
+
+export default {
+  props: ['cryptoname'],
+  setup(props) {
+    const price = ref(null);
+    const cryptoName = ref(props.cryptoname);
+
+    onMounted(async () => {
+      const data = await getCryptoData(cryptoName.value);
+      const latestData = data[data.length - 1];
+      price.value = latestData[4];  // closing price
+    });
+
+    return {
+      price,
+      cryptoName
+    };
   }
-  </script>
-  
+}
+</script>
+
+<style scoped>
+/* Ajoutez ici le CSS pour styliser votre composant */
+</style>
