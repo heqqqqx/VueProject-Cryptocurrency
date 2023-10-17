@@ -1,22 +1,34 @@
 <template>
+  
+      
   <nav class="navbar">
     <div class="container">
       <a class="navbar-brand" href="#">CryptoNews</a>
+      <a class="movingbar-data" ><MovingBar /></a>
       <ul class="navbar-nav">
         <li class="nav-item"><router-link to="/" class="nav-link">Home</router-link></li>
         <li class="nav-item"><router-link to="/news" class="nav-link">News</router-link></li>
       </ul>
     </div>
   </nav>
+
 </template>
 
 <script>
+import MovingBar from '../components/MovingBar.vue';
 export default {
   name: 'Header',
+  components: {
+    MovingBar
+  }
 };
 </script>
 
 <style scoped>
+
+.movingbar-data {
+    width: 70%;
+}
 .navbar {
   background-color: #333;
   color: white;
@@ -25,6 +37,7 @@ export default {
   top: 0;
   left: 0;
   z-index: 1000;
+  
 }
 
 .container {
