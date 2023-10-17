@@ -7,11 +7,14 @@
     props: ['cryptoname'],
     methods: {
       goToNewsPage() {
-        if(this.cryptoname.includes('USDT')) {
+        if (this.cryptoname.includes('USDT')) {
           this.$router.push(`/news/specific/${this.cryptoname.replace('USDT', '')}`);
-        } else {
-        this.$router.push(`/news/specific/${this.cryptoname.replace('USD', '')}`);
-      }}
+        }
+        else {
+          this.$router.push(`/news/specific/${this.cryptoname.replace('USD', '')}`);
+        }
+        
+      }
     }
   }
   </script>

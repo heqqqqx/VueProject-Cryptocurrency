@@ -7,24 +7,16 @@
   export default {
     props: ['page'],
     methods: {
-    goToNextPage() {
-        if (this.page) {
-            const nextPage = parseInt(this.page, 10) + 1;
-            this.$router.push(`/news/${nextPage}`);
-        }
-        else {
-            const nextPage = parseInt(1, 10) + 1;
-            this.$router.push(`/news/${nextPage}`);
-        }
-                
-        
+        goToNextPage() {
+        const basePath = this.$route.path.includes('specific') ? `/news/specific/${this.$route.params.cryptoname}` : '/news';
+        const nextPage = this.page ? parseInt(this.page, 10) + 1 : 2;
+        this.$router.push(`${basePath}/${nextPage}`);
     },
     goToPreviousPage() {
-        const previousPage = parseInt(this.page, 10) -1;
-        if (previousPage <= 0) {
-            previousPage = 1;
-        }
-        this.$router.push(`/news/${previousPage}`);
+        const basePath = this.$route.path.includes('specific') ? `/news/specific/${this.$route.params.cryptoname}` : '/news';
+        let previousPage = this.page ? parseInt(this.page, 10) - 1 : 1;
+        if (previousPage <= 0) previousPage = 1;
+        this.$router.push(`${basePath}/${previousPage}`);
     }
 }
   }
