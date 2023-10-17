@@ -24,8 +24,6 @@ export default {
   },
   created() {
     if (this.$route.params.cryptoname) {
-      console.log(this.$route.params.cryptoname);
-    // Si cryptoname est présent dans l'URL
     cryptonews.getNews(this.$route.params.cryptoname).then(response => {
       this.news = response.data.data;
     });;
@@ -58,7 +56,7 @@ export default {
   position: absolute;
   top: 10px;
   right: 10px;
-  background-color: #ffcc00; /* Yellow background like a post-it */
+  background-color: #ffcc00; 
   padding: 5px;
   border-radius: 5px;
   font-weight: bold;
@@ -85,7 +83,13 @@ export default {
   color: #007BFF;
   text-decoration: none;
 }
-
+.news-item a:hover {
+  display: inline-block;
+  margin-top: 10px;
+  font-weight: bold;
+  color: #ffcc00;
+  text-decoration: none;
+}
 /* Add this media query */
 @media (min-width: 1025px) {
   .news-container {
