@@ -1,7 +1,6 @@
 <template>
   <footer class="app-footer">
-    <!-- Your footer content will go here -->
-    <p>&copy; 2023 Your Project Name</p>
+    <p>&copy; 2023 </p>
   </footer>
 </template>
 
