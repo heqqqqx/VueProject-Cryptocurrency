@@ -23,16 +23,13 @@ export default {
     };
   },
   created() {
-    if (this.$route.params.cryptoname) {
-    cryptonews.getNews(this.$route.params.cryptoname).then(response => {
-      this.news = response.data.data;
-    });;
-} else {
-    
-    cryptonews.getNews().then(response => {
-      this.news = response.data.data;
-    });}
-  },
+  const cryptoname = this.$route.params.cryptoname;
+  const page = this.$route.params.page;
+  cryptonews.getNews(page,cryptoname).then(response => {
+    this.news = response.data.data;
+  });
+},
+
 };
 </script>
 

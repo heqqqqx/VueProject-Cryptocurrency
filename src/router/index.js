@@ -13,10 +13,17 @@ const routes = [{
         props: true
     },
     {
-        path: '/news/:cryptoname',
-        name: 'News on specific crypto',
+        path: '/news/:page',
+        name: 'News',
         component: News,
-    }
+        props: true
+    },
+    {
+        path: '/news/specific/:cryptoname/:page?',
+        name: 'CryptonameNews',
+        component: News,
+        props: route => ({ cryptoname: route.params.cryptoname, page: 1 })
+    },
 
 ];
 

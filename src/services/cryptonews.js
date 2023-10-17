@@ -6,10 +6,15 @@ const apiClient = axios.create({
 });
 
 export default {
-    getNews(cryptoname) {
+
+    getNews(page, cryptoname) {
+        const pageNum = page || 1;
         const url = cryptoname ?
-            `/api/v1?tickers=${cryptoname}&items=9&page=1&token=ul9mca2hqxq8h5p1u13xfkmcnaf0umfkijqgypyh` :
-            '/api/v1/category?section=alltickers&items=9&page=1&token=ul9mca2hqxq8h5p1u13xfkmcnaf0umfkijqgypyh';
+            `/api/v1?tickers=${cryptoname}&items=9&page=${pageNum}&token=ul9mca2hqxq8h5p1u13xfkmcnaf0umfkijqgypyh` :
+            `/api/v1/category?section=alltickers&items=9&page=${pageNum}&token=ul9mca2hqxq8h5p1u13xfkmcnaf0umfkijqgypyh`;
+        console.log(url);
         return apiClient.get(url);
     },
+
+
 };
