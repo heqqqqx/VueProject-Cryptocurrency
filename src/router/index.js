@@ -11,6 +11,11 @@ const routes = [{
         name: 'Data',
         component: Data,
         props: true
+    },
+    {
+        path: '/news/:cryptoname',
+        name: 'News on specific crypto',
+        component: News,
     }
 
 ];

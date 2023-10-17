@@ -13,6 +13,7 @@
 </template>
 
 <script>
+
 import cryptonews from '@/services/cryptonews.js';
 
 export default {
@@ -22,9 +23,17 @@ export default {
     };
   },
   created() {
+    if (this.$route.params.cryptoname) {
+      console.log(this.$route.params.cryptoname);
+    // Si cryptoname est présent dans l'URL
+    cryptonews.getNews(this.$route.params.cryptoname).then(response => {
+      this.news = response.data.data;
+    });;
+} else {
+    
     cryptonews.getNews().then(response => {
       this.news = response.data.data;
-    });
+    });}
   },
 };
 </script>
