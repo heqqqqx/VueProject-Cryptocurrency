@@ -17,7 +17,7 @@ import NextPreviousButtons from '../components/NextPreviousButtons.vue'
 export default {
   methods: {
     goToDataPage(ticker) {
-      this.$router.push(`/data/${ticker}`)
+      this.$router.push(`/data/${ticker}USD`)
     }
   },
   components: {

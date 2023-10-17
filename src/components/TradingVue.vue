@@ -27,7 +27,7 @@ export default {
       new window.TradingView.widget({
         width: 980,
         height: 610,
-        symbol: `BINANCE:${this.cryptoname}USDT`,
+        symbol: `BINANCE:${this.cryptoname}`,
         interval: 'D',
         timezone: 'Etc/UTC',
         theme: 'dark',
@@ -47,6 +47,8 @@ export default {
 </script>
   
   <style scoped>
-/* Styles si nécessaire */
+.tradingview-widget-container {
+    margin-top: 60px;
+  }
 </style>
   

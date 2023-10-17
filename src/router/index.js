@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import News from '../views/News.vue';
 import Data from '../views/Data.vue'
+import DataView from '../views/DataGeneral.vue'
 const routes = [{
         path: '/data/:cryptoname',
         name: 'Data',
@@ -19,6 +20,11 @@ const routes = [{
         component: News,
         props: route => ({ cryptoname: route.params.cryptoname, page: 1 })
     },
+    {
+        path: '/data',
+        name: 'data',
+        component: DataView
+    }
 
 ];
 
