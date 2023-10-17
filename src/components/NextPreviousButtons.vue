@@ -8,8 +8,16 @@
     props: ['page'],
     methods: {
     goToNextPage() {
-        const nextPage = parseInt(this.page, 10) + 1;
-        this.$router.push(`/news/${nextPage}`);
+        if (this.page) {
+            const nextPage = parseInt(this.page, 10) + 1;
+            this.$router.push(`/news/${nextPage}`);
+        }
+        else {
+            const nextPage = parseInt(1, 10) + 1;
+            this.$router.push(`/news/${nextPage}`);
+        }
+                
+        
     },
     goToPreviousPage() {
         const previousPage = parseInt(this.page, 10) -1;

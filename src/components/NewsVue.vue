@@ -1,7 +1,7 @@
 <template>
   <div class="news-container">
     <div v-for="(newsItem, index) in news" :key="index" class="news-item">
-      <div class="ticker-box">
+      <div class="ticker-box" v-on:click="goToDataPage(newsItem.tickers[0])">
         {{ newsItem.tickers.join(', ') }}
       </div>
       <img :src="newsItem.image_url" alt="News Image" class="news-image" />
@@ -10,13 +10,19 @@
       <a :href="newsItem.news_url" target="_blank">Read more</a>
     </div>
   </div>
-    <NextPreviousButtons :page="this.$route.params.page" />
+  <NextPreviousButtons :page="this.$route.params.page" />
 </template>
   <script>
-  import NextPreviousButtons from '../components/NextPreviousButtons.vue';
+import NextPreviousButtons from '../components/NextPreviousButtons.vue'
 export default {
-    components: {
-        NextPreviousButtons},
+  methods: {
+    goToDataPage(ticker) {
+      this.$router.push(`/data/${ticker}`)
+    }
+  },
+  components: {
+    NextPreviousButtons
+  },
   props: ['news']
 }
 </script>
