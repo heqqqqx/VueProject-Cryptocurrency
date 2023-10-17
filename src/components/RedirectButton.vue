@@ -7,7 +7,7 @@
     props: ['cryptoname'],
     methods: {
       goToNewsPage() {
-        this.$router.push(`/news/${this.cryptoname}`);
+        this.$router.push(`/news/specific/${this.cryptoname}`);
       }
     }
   }
